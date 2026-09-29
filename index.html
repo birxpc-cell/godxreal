@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GODXREAL - Official Community</title>
+
+    <style>
+        :root {
+            --bg: #090d16;
+            --card-bg: rgba(18, 26, 43, 0.85);
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #00ff87;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 242, 254, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(0, 255, 135, 0.08) 0%, transparent 60%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            padding: 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 410px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px 22px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 242, 254, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 1.2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.4; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        .title-box h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+        }
+
+        .title-box p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .check-box {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .check-icon {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #030712;
+            font-size: 17px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 0 35px rgba(0, 242, 254, 0.7); }
+        }
+
+        .timer-box {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timer-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .timer-clock {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--accent);
+            font-family: monospace;
+        }
+
+        .footer {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 5px;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-links {
+            margin-top: 6px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .legal-links span {
+            cursor: pointer;
+            color: var(--text-muted);
+            text-decoration: underline;
+            font-size: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid var(--primary);
+            border-radius: 18px;
+            padding: 20px;
+            max-width: 400px;
+            max-height: 75vh;
+            overflow-y: auto;
+            text-align: left;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .modal-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            display: block;
+            margin-top: 15px;
+            background: var(--primary);
+            color: #000;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Status Badge -->
+        <div class="status-badge">
+            <span class="status-dot"></span> OFFICIAL COMMUNITY CHANNEL
+        </div>
+
+        <!-- Title -->
+        <div class="title-box">
+            <h1>GODXREAL</h1>
+            <p>Verified Premium Telegram Group ⚡</p>
+        </div>
+
+        <!-- Protection Checklist -->
+        <div class="check-box">
+            <div class="check-item"><span class="check-icon">✓</span> 100% Free Daily Updates</div>
+            <div class="check-item"><span class="check-icon">✓</span> Direct Access to Main Community</div>
+            <div class="check-item"><span class="check-icon">✓</span> Verified Members Only Area</div>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="https://t.me/+8xrfWmHtiagxNTY1" class="cta-btn" target="_blank">
+            🚀 JOIN TELEGRAM NOW 🚀
+        </a>
+
+        <!-- Expiry Timer -->
+        <div class="timer-box">
+            <span class="timer-text">FREE ACCESS EXPIRES IN:</span>
+            <span class="timer-clock" id="timer">00:15</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div>Ads Managed By <a href="https://t.me/RAJA_SUPPORT0017" target="_blank">@RAJA_SUPPORT0017</a></div>
+            <div class="legal-links">
+                <span onclick="openModal('privacy')">Privacy Policy</span> | 
+                <span onclick="openModal('terms')">Terms</span> | 
+                <span onclick="openModal('disclaimer')">Disclaimer</span>
+            </div>
+            <div style="margin-top: 4px; font-size: 10px; opacity: 0.5;">© 2026 All Rights Reserved.</div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <h3>Privacy Policy</h3>
+            <p>We respect your privacy. This website does not collect personal data directly. Standard web logs may be processed for security and system stability.</p>
+            <div class="close-btn" onclick="closeModal('privacy')">Close</div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h3>Terms & Conditions</h3>
+            <p>This landing page provides informational access links to third-party platforms like Telegram. Joining external channels is at the user's sole discretion. Users must be 18+.</p>
+            <div class="close-btn" onclick="closeModal('terms')">Close</div>
+        </div>
+    </div>
+
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <h3>Disclaimer</h3>
+            <p>This website is not affiliated with, endorsed by, or sponsored by Meta or Facebook. All trademarks belong to their respective owners.</p>
+            <div class="close-btn" onclick="closeModal('disclaimer')">Close</div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        let timeLeft = 15;
+        const timerDisplay = document.getElementById('timer');
+        const countdown = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerDisplay.innerText = "00:00";
+            } else {
+                timeLeft--;
+                timerDisplay.innerText = "00:" + (timeLeft < 10 ? '0' + timeLeft : timeLeft);
+            }
+        }, 1000);
+
+        // Modal Controls
+        function openModal(id) {
+            document.getElementById(id + 'Modal').style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id + 'Modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
